@@ -502,10 +502,10 @@ void FX3DevCyAPI::xfer_loop() {
     }
     
     if ((Params->bSuperSpeedDevice || Params->bHighSpeedDevice) && (Params->EndPt->Attributes == 1)){  // HS/SS ISOC Xfers must use PPX >= 8
-        Params->PPX = max(Params->PPX, 8);
+        Params->PPX = std::max(Params->PPX, 8);
         Params->PPX = (Params->PPX / 8) * 8;
         if(Params->bHighSpeedDevice)
-            Params->PPX = max(Params->PPX, 128);
+            Params->PPX = std::max(Params->PPX, 128);
     }
 
     long BytesXferred = 0;
@@ -591,7 +591,7 @@ void FX3DevCyAPI::xfer_loop() {
                 Failures++;
         }
 
-        BytesXferred = max(BytesXferred, 0);
+        BytesXferred = std::max(BytesXferred, (long)0);
 
         size_tx_mb += ( ( double ) len ) / ( 1024.0 * 1024.0 );
         if ( data_handler ) {

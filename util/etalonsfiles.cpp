@@ -1,5 +1,6 @@
 #include "etalonsfiles.h"
 
+#include <cmath>
 #include <cstdio>
 #include <set>
 #include <QDirIterator>

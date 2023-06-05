@@ -22,6 +22,7 @@ unix: QMAKE_CXXFLAGS += -std=c++11
 
 
 SOURCES += main.cpp \
+    hwfx3/cy_inc/CyAPI.cpp \
     hwmanager.cpp \
     itsmain.cpp \
     gui/qcustomplot.cpp \
@@ -158,7 +159,7 @@ INCLUDEPATH += $$PWD/fftw_inc
 
 win32: LIBS += -luser32
 win32: LIBS += -lsetupapi
-win32: QMAKE_LFLAGS += /NODEFAULTLIB:LIBCMT
+#win32: QMAKE_LFLAGS += /NODEFAULTLIB:LIBCMT
 
 win32:!win32-g++: LIBS += -L$$PWD/libs/libusb/MS32/static/ -llibusb-1.0
 else:win32-g++:   LIBS += -L$$PWD/libs/libusb/MinGW32/static/ -lusb-1.0
@@ -170,7 +171,7 @@ win32:!win32-g++: DEPENDPATH += $$PWD/libs/libusb/MS32/static
 else:win32-g++:   DEPENDPATH += $$PWD/libs/libusb/MinGW32/static
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libusb/MS32/static/libusb-1.0.lib
-else:win32-g++:   PRE_TARGETDEPS += $$PWD/libs/libusb/MinGW32/static/libusb-1.0.a
+else:win32-g++:   PRE_TARGETDEPS += $$PWD/libs/libusb/MinGW32/dll/libusb-1.0.dll
 
 
 
@@ -180,7 +181,7 @@ win32: INCLUDEPATH += $$PWD/libs/cyapi/x86
 win32: DEPENDPATH += $$PWD/libs/cyapi/x86
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/libCyAPI.a
+else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
 
 
 
@@ -190,7 +191,7 @@ win32: INCLUDEPATH += $$PWD/libs/libfftw
 win32: DEPENDPATH += $$PWD/libs/libfftw
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/liblibfftw3f-3.a
+else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
 
 unix:!macx: LIBS += -lusb-1.0
 
