@@ -23,7 +23,7 @@
 #ifndef CyUSBH
 #define CyUSBH
 
-#include "CyUSB30_def.h"
+#include "cyusb30_def.h"
 
 /* Data straucture for the Vendor request and data */
 typedef struct vendorCmdData

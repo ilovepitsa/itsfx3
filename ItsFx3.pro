@@ -22,7 +22,6 @@ unix: QMAKE_CXXFLAGS += -std=c++11
 
 
 SOURCES += main.cpp \
-    hwfx3/cy_inc/CyAPI.cpp \
     hwmanager.cpp \
     itsmain.cpp \
     gui/qcustomplot.cpp \
@@ -49,8 +48,6 @@ SOURCES += main.cpp \
     hwfx3/FileSimDev.cpp \
     SpectrumForm.cpp \
     util/TimeComputator.cpp \
-    hwfx3/ad9361/ad9361_tuner.cpp \
-    hwfx3/ad9361/types/filters.cpp \
     gcacorr/lazy_matrix.cpp \
     phaseform.cpp \
     phasewidget.cpp \
@@ -118,14 +115,7 @@ HEADERS  += itsmain.h \
     SpectrumForm.h \
     gcacorr/averagervector.h \
     util/TimeComputator.h \
-    hwfx3/ad9361/ad9361_defines.h \
-    hwfx3/ad9361/ad9361_tuner.h \
     hwfx3/devioifce.h \
-    hwfx3/ad9361/types/filters.h \
-    hwfx3/ad9361/ad9361_client.h \
-    hwfx3/ad9361/ad9361_filter_taps.h \
-    hwfx3/ad9361/ad9361_gain_tables.h \
-    hwfx3/ad9361/ad9361_synth_lut.h \
     datahandlers/filedumpcallbackifce.h \
     gcacorr/lazy_matrix.h \
     phaseform.h \
@@ -192,7 +182,3 @@ win32: DEPENDPATH += $$PWD/libs/libfftw
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
-
-unix:!macx: LIBS += -lusb-1.0
-
-unix:!macx: LIBS += -lfftw3f
