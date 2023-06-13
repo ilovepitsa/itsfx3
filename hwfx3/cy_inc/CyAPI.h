@@ -24,6 +24,7 @@
 #define CyUSBH
 
 #include "cyusb30_def.h"
+#include <handleapi.h>
 
 /* Data straucture for the Vendor request and data */
 typedef struct vendorCmdData
@@ -506,7 +507,10 @@ public:
     bool        ReConnect(void);
     bool        Suspend(void);
     bool        Resume(void);
-    bool        IsOpen(void)    { return (hDevice != INVALID_HANDLE_VALUE); }
+    bool        IsOpen(void)    {
+        auto placeholder = INVALID_HANDLE_VALUE;
+        return (hDevice != placeholder);
+    }
 
     UCHAR       PowerState(void);
 
