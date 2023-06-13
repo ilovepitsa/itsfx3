@@ -23,12 +23,13 @@
 #define _CYUSB30_H
 
 //#pragma pack(1)
+#include <minwindef.h>
+#include <minwinbase.h>
 #pragma pack(push, 1)
 // USB3.0 specific constant defination
 #define BCDUSBJJMASK  0xFF00 //(0xJJMN JJ - Major version,M Minor version, N sub-minor vesion)
 #define USB30MAJORVER 0x0300
 #define USB20MAJORVER 0x0200
-#include <minwindef.h>
 
 #define USB_BOS_DESCRIPTOR_TYPE			      0x0F
 #define USB_DEVICE_CAPABILITY                 0x10
