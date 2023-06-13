@@ -145,36 +145,84 @@ FORMS    += itsmain.ui \
     phaseform.ui \
     tuneform.ui
 
+#INCLUDEPATH += $$PWD/fftw_inc
+
+# LIBS += -luser32
+# LIBS += -lsetupapi
+##win32: QMAKE_LFLAGS += /NODEFAULTLIB:LIBCMT
+
+# LIBS += -L$$PWD/libs/libusb/MinGW32/static/ -lusb-1.0
+
+#INCLUDEPATH += $$PWD/libs/libusb/MinGW32/static
+
+#DEPENDPATH += $$PWD/libs/libusb/MinGW32/static
+
+#PRE_TARGETDEPS += $$PWD/libs/libusb/MinGW32/dll/libusb-1.0.dll
+
+
+
+#LIBS += -L$$PWD/libs/cyapi/x86/CyAPI.lib
+
+#INCLUDEPATH += $$PWD/libs/cyapi/x86
+#DEPENDPATH += $$PWD/libs/cyapi/x86
+
+#PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
+#PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
+
+
+
+#win32: LIBS += -L$$PWD/libs/libfftw/ -llibfftw3f-3
+
+#win32: INCLUDEPATH += $$PWD/libs/libfftw
+#win32: DEPENDPATH += $$PWD/libs/libfftw
+
+#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
+#else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
 INCLUDEPATH += $$PWD/fftw_inc
 
- LIBS += -luser32
- LIBS += -lsetupapi
-#win32: QMAKE_LFLAGS += /NODEFAULTLIB:LIBCMT
-
- LIBS += -L$$PWD/libs/libusb/MinGW32/static/ -lusb-1.0
-
-INCLUDEPATH += $$PWD/libs/libusb/MinGW32/static
-
-DEPENDPATH += $$PWD/libs/libusb/MinGW32/static
-
-PRE_TARGETDEPS += $$PWD/libs/libusb/MinGW32/dll/libusb-1.0.dll
+win32: LIBS += -luser32
+win32: LIBS += -lsetupapi
 
 
 
-LIBS += -L$$PWD/libs/cyapi/x86/CyAPI.lib
-
-INCLUDEPATH += $$PWD/libs/cyapi/x86
-DEPENDPATH += $$PWD/libs/cyapi/x86
-
-PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
-PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
+LIBS += -L$$PWD/libs/libusb/MinGW64/dll/ -llibusb-1.0
 
 
+INCLUDEPATH += $$PWD/libs/libusb/MinGW64/dll
 
-win32: LIBS += -L$$PWD/libs/libfftw/ -llibfftw3f-3
+#win32:!win32-g++: DEPENDPATH += $$PWD/libs/libusb/MS32/static
 
-win32: INCLUDEPATH += $$PWD/libs/libfftw
-win32: DEPENDPATH += $$PWD/libs/libfftw
+DEPENDPATH += $$PWD/libs/libusb/MinGW64/dll
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
+#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libusb/MS32/static/libusb-1.0.lib
+PRE_TARGETDEPS += $$PWD/libs/libusb/MinGW64/dll/libusb-1.0.dll
+
+
+
+#win32: LIBS += -L$$PWD/libs/cyapi/x86/ -lCyAPI
+LIBS += -L$$PWD/libs/cyapi/x64/ -lCyAPI
+
+#win32: INCLUDEPATH += $$PWD/libs/cyapi/x86
+INCLUDEPATH += $$PWD/libs/cyapi/x64
+#win32: DEPENDPATH += $$PWD/libs/cyapi/x86
+DEPENDPATH += $$PWD/libs/cyapi/x64
+
+#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/cyapi/x86/CyAPI.lib
+PRE_TARGETDEPS += $$PWD/libs/cyapi/x64/CyAPI.lib
+
+
+
+#win32: LIBS += -L$$PWD/libs/libfftw/ -llibfftw3f-3
+
+#win32: INCLUDEPATH += $$PWD/libs/libfftw
+win32: INCLUDEPATH += $$PWD/libs/libfftw/x64
+#win32: DEPENDPATH += $$PWD/libs/libfftw
+win32: DEPENDPATH += $$PWD/libs/libfftw/x64
+
+#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libfftw/libfftw3f-3.lib
+PRE_TARGETDEPS += $$PWD/libs/libfftw/x64/libfftw3f-3.lib
+
+
+unix:!macx: LIBS += -lusb-1.0
+
+unix:!macx: LIBS += -lfftw3f
